@@ -2,6 +2,7 @@ package org.example;
 
 public class SumCalculator {
 
+//Переконайся, що твій код запускається з терміналу викликом команди gradle test
     public static int sum(int n) {
         int sum = 0;
         for (int i = 1; i <= n; i++) {
@@ -20,7 +21,7 @@ public class SumCalculator {
             System.out.println(sum(1));
             System.out.println(sum(0));
         }catch (IllegalArgumentException e){
-            System.err.println("Помилка: " + e.getMessage());
+            System.out.println("Помилка: " + e.getMessage());
         }
     }
 }
