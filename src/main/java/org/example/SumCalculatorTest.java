@@ -1,13 +1,34 @@
 package org.example;
 
+import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+
+import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertThrows;
+
 public class SumCalculatorTest {
-//    протестуй наступну поведінку методу sum() (кожний пункт списку - окремий тест):
-//
-//    виклик sum(1) повертає 1
-//    виклик sum(3) повертає 6
-//    виклик sum(0) викидає виключення IllegalArgumentException
 
-//    Використай метод з анотацією @BeforeEach,
-//    щоб конструювати об'єкт класу SumCalculator перед кожним тестом.
+    private SumCalculator calculator;
 
+    @BeforeEach
+    public void createCalculator() {
+        calculator = new SumCalculator();
+    }
+
+    @Test
+    public void testSumN1() {
+        assertEquals(1, calculator.sum(1));
+    }
+
+    @Test
+    public void testSumN3() {
+        assertEquals(6, calculator.sum(3));
+    }
+
+    @Test
+    public void testSumN0() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            calculator.sum(0);
+        });
+    }
 }

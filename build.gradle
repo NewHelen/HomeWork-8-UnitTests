@@ -15,24 +15,29 @@ repositories {
 }
 
 dependencies {
-//    testImplementation platform('org.junit:junit-bom:5.9.1')
-//    testImplementation 'org.junit.jupiter:junit-jupiter'
+    implementation 'junit:junit:4.13.2'
+    implementation 'org.junit.jupiter:junit-jupiter:5.8.1'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
 application {
-    mainClassName = 'org.example.SumCalculator'
+    mainClassName = 'org.example.SumCalculatorTest'
     applicationDefaultJvmArgs = ['-Dfile.encoding=UTF-8']
 }
 
 test {
-    useJUnitPlatform()
+    useJUnitPlatform(){
+        includeEngines 'junit-jupiter'
+    }
+    testLogging {
+        events 'passed', 'failed', 'skipped'
+    }
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': 'org.example.SumCalculator'
+        attributes 'Main-Class': 'org.example.SumCalculatorTest'
     }
     from configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
 }
