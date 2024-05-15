@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'application'
 }
 
 group = 'org.example'
@@ -21,11 +20,6 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-application {
-    mainClassName = 'org.example.SumCalculatorTest'
-    applicationDefaultJvmArgs = ['-Dfile.encoding=UTF-8']
-}
-
 test {
     useJUnitPlatform(){
         includeEngines 'junit-jupiter'
@@ -33,12 +27,5 @@ test {
     testLogging {
         events 'passed', 'failed', 'skipped'
     }
-}
-
-jar {
-    manifest {
-        attributes 'Main-Class': 'org.example.SumCalculatorTest'
-    }
-    from configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }
 }
 

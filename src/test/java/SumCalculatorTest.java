@@ -1,5 +1,4 @@
-package org.example;
-
+import org.example.SumCalculator;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
